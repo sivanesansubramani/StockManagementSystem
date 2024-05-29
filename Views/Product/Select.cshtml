@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Inventory.Models.ProductDetailsModels>
+
+@{
+    ViewData["Title"] = "Select";
+}
+
+<h1>Select</h1>
+
+<p>
+    <a asp-action="InsertRecord">Add New Product</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ProducatName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VendorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RetailPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ProducatName)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.VendorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RetailPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SellingPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCount)
+            </td>
+            <td>
+                    @Html.ActionLink("Purchase", "EditSales", new {  id=item.Productid }) |
+                    @Html.ActionLink("Ubdate Stock", "Edit", new {  id=item.Productid }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.Productid }) |
+                    @Html.ActionLink("Delete Product", "Delete", new {  id=item.Productid  })
+            </td>
+        </tr>
+
+            <script>
+                // Check product count and show alert if less than 10
+                var productCount = @item.ProductCount;
+                if (productCount < 10) {
+                    alert('@item.ProducatName -- supplied by -- @item.VendorName is less than 10 in stock: ' + productCount);
+                }
+            </script>
+
+}
+    </tbody>
+</table>
+

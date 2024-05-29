@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Inventory.Models.ProductDetailsModels>
+
+@{
+    ViewData["Title"] = "Customer";
+}
+
+<h1>Customer</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProducatName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VendorName)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProducatName)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VendorName)
+                </td>
+           
+        </tr>
+}
+    </tbody>
+</table>
